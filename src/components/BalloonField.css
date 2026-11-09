@@ -1,0 +1,181 @@
+.balloon-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.balloon-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 20%, #2a1048 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 15% 80%, rgba(120, 40, 140, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 45% at 90% 70%, rgba(60, 20, 90, 0.45) 0%, transparent 50%),
+    linear-gradient(180deg, #14081f 0%, #0a0612 45%, #050308 100%);
+}
+
+.balloon-sparkles {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 22%, rgba(255, 230, 140, 0.9), transparent),
+    radial-gradient(1px 1px at 28% 68%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 55% 18%, rgba(255, 210, 120, 0.8), transparent),
+    radial-gradient(1px 1px at 72% 42%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1.5px 1.5px at 88% 76%, rgba(255, 230, 140, 0.75), transparent),
+    radial-gradient(1px 1px at 40% 88%, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1px 1px at 63% 55%, rgba(255, 220, 150, 0.65), transparent);
+  opacity: 0.75;
+}
+
+.balloon {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate3d(0, 0, 0);
+  animation: balloon-float 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+.balloon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: inherit;
+  box-shadow:
+    inset -12px -18px 28px rgba(0, 0, 0, 0.35),
+    inset 10px 12px 22px rgba(255, 255, 255, 0.28),
+    0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.balloon-shine {
+  position: absolute;
+  top: 14%;
+  left: 18%;
+  width: 28%;
+  height: 22%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.15) 55%, transparent 70%);
+  z-index: 2;
+  filter: blur(0.4px);
+}
+
+.balloon-knot {
+  position: absolute;
+  left: 50%;
+  bottom: -6%;
+  width: 14%;
+  height: 10%;
+  margin-left: -7%;
+  background: inherit;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  filter: brightness(0.75);
+  z-index: 1;
+}
+
+.balloon-string {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 1px;
+  height: 70%;
+  margin-left: -0.5px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), transparent);
+  opacity: 0.5;
+}
+
+.balloon--lime {
+  background: radial-gradient(circle at 32% 28%, #e8ff8a 0%, #b8f03a 28%, #7ed321 58%, #3f8f12 100%);
+}
+
+.balloon--magenta {
+  background: radial-gradient(circle at 32% 28%, #ffb3e0 0%, #ff4fb2 32%, #e0127a 62%, #8a0a4a 100%);
+}
+
+.balloon--violet {
+  background: radial-gradient(circle at 32% 28%, #d4b0ff 0%, #9b5cff 30%, #6b2fd6 60%, #3a157a 100%);
+}
+
+.balloon--fuchsia {
+  background: radial-gradient(circle at 32% 28%, #ff9ad4 0%, #ff2d95 35%, #c4006a 65%, #6e003c 100%);
+}
+
+.balloon--orchid {
+  background: radial-gradient(circle at 32% 28%, #c9a0ff 0%, #8b4dff 32%, #5a22b8 62%, #2d0f5c 100%);
+}
+
+.balloon-confetti i {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  background: #ffe08a;
+  opacity: 0.55;
+  animation: confetti-drift 12s linear infinite;
+}
+
+.balloon-confetti i:nth-child(3n) {
+  background: #ff7ac8;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+.balloon-confetti i:nth-child(4n) {
+  background: #b8f03a;
+  width: 3px;
+  height: 6px;
+}
+
+.balloon-confetti i:nth-child(5n) {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+}
+
+@keyframes balloon-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-3deg);
+  }
+  25% {
+    transform: translate3d(12px, -22px, 0) rotate(2deg);
+  }
+  50% {
+    transform: translate3d(-8px, -10px, 0) rotate(-1deg);
+  }
+  75% {
+    transform: translate3d(16px, -28px, 0) rotate(3deg);
+  }
+}
+
+@keyframes confetti-drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateY(-24px) rotate(120deg);
+    opacity: 0.7;
+  }
+}
+
+.balloon-field.is-reduced .balloon,
+.balloon-field.is-reduced .balloon-confetti i {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .balloon,
+  .balloon-confetti i {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .balloon {
+    opacity: 0.7;
+  }
+}

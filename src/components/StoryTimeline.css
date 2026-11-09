@@ -1,0 +1,110 @@
+.timeline {
+  padding: 5rem 1.25rem 6rem;
+  position: relative;
+}
+
+.timeline-heading {
+  text-align: center;
+  max-width: 32rem;
+  margin: 0 auto 3rem;
+}
+
+.timeline h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 0.75rem;
+}
+
+.timeline-track {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 0.5rem 0;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 1.1rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(232, 201, 160, 0.15);
+}
+
+.timeline-line-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--champagne), transparent);
+  transform-origin: top center;
+  transform: scaleY(0);
+}
+
+.timeline-beat {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  gap: 1rem;
+  align-items: start;
+  position: relative;
+}
+
+.timeline-year {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 201, 160, 0.45);
+  background: var(--ink);
+  display: grid;
+  place-items: center;
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  z-index: 1;
+}
+
+.timeline-card {
+  padding: 1.25rem 1.35rem;
+  background: linear-gradient(135deg, rgba(22, 34, 56, 0.75), rgba(7, 11, 22, 0.4));
+  border: 1px solid rgba(232, 201, 160, 0.12);
+}
+
+.timeline-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.45rem;
+}
+
+.timeline-card p {
+  color: var(--cream-muted);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 800px) {
+  .timeline-line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-beat {
+    grid-template-columns: 1fr 2.2rem 1fr;
+    gap: 1.25rem;
+  }
+
+  .timeline-beat .timeline-year {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .timeline-beat.is-right .timeline-card {
+    grid-column: 3;
+  }
+
+  .timeline-beat.is-left .timeline-card {
+    grid-column: 1;
+    text-align: right;
+  }
+}

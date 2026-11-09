@@ -1,0 +1,224 @@
+.photos {
+  padding: 5rem 1.25rem 6rem;
+}
+
+.photos-heading {
+  text-align: center;
+  max-width: 36rem;
+  margin: 0 auto 2.5rem;
+}
+
+.photos h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.photos-heading code,
+.videos-heading code,
+.quotes-heading code,
+.funny-heading code {
+  font-size: 0.82em;
+  color: var(--champagne);
+  background: rgba(232, 201, 160, 0.08);
+  padding: 0.1em 0.35em;
+}
+
+.photo-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 720px) {
+  .photo-grid {
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 140px;
+    gap: 0.85rem;
+  }
+
+  .photo-tile.span-1 {
+    grid-column: span 4;
+    grid-row: span 2;
+  }
+  .photo-tile.span-2 {
+    grid-column: span 5;
+    grid-row: span 2;
+  }
+  .photo-tile.span-3 {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+  .photo-tile.span-4 {
+    grid-column: span 6;
+    grid-row: span 2;
+  }
+  .photo-tile.span-5 {
+    grid-column: span 6;
+    grid-row: span 2;
+  }
+}
+
+.photo-tile {
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
+  background: #121a2a;
+  border: 1px solid rgba(232, 201, 160, 0.12);
+  opacity: 0;
+  transform: translateY(18px);
+  text-align: left;
+  color: inherit;
+}
+
+.photo-grid.is-live .photo-tile {
+  animation: photo-in 0.7s var(--ease-out) forwards;
+}
+
+.photo-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-out);
+}
+
+.photo-tile:hover img {
+  transform: scale(1.06);
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  display: grid;
+  place-content: center;
+  gap: 0.35rem;
+  text-align: center;
+  background:
+    linear-gradient(145deg, rgba(232, 201, 160, 0.12), transparent 50%),
+    linear-gradient(160deg, #1a2740, #0c1320);
+  padding: 1rem;
+}
+
+.photo-placeholder.large {
+  min-height: 50vh;
+}
+
+.photo-placeholder span {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--champagne);
+}
+
+.photo-placeholder strong {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.photo-placeholder small {
+  color: var(--cream-dim);
+  font-size: 0.78rem;
+}
+
+.photo-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.5rem 0.9rem 0.85rem;
+  background: linear-gradient(transparent, rgba(4, 6, 13, 0.88));
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.photo-tile:hover .photo-caption,
+.photo-tile:focus-visible .photo-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.photo-caption em {
+  display: block;
+  font-style: normal;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin-bottom: 0.25rem;
+}
+
+.photo-caption p {
+  font-size: 0.88rem;
+  line-height: 1.35;
+  color: var(--cream);
+}
+
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(4, 6, 13, 0.88);
+  backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.photo-lightbox-inner {
+  width: min(92vw, 820px);
+  text-align: center;
+}
+
+.photo-lightbox-inner img {
+  max-height: 70vh;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto 1rem;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.photo-lightbox-inner > p {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--cream-muted);
+  margin-bottom: 1.25rem;
+}
+
+.photo-lightbox-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+.photo-lightbox-nav button {
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(232, 201, 160, 0.35);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  color: var(--champagne-soft);
+}
+
+@keyframes photo-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-tile,
+  .photo-grid.is-live .photo-tile {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}

@@ -1,0 +1,31 @@
+.app {
+  position: relative;
+  min-height: 100%;
+}
+
+.app-main {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+.app-main.is-locked {
+  overflow: hidden;
+  height: 100svh;
+}
+
+.journey {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s var(--ease-out);
+}
+
+.journey.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.journey > * {
+  position: relative;
+  z-index: 1;
+}

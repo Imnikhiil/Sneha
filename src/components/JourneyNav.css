@@ -1,0 +1,60 @@
+.journey-nav {
+  position: fixed;
+  right: max(0.85rem, env(safe-area-inset-right));
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.journey-nav a {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 201, 160, 0.45);
+  background: transparent;
+  position: relative;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.journey-nav a.is-active {
+  background: var(--champagne);
+  transform: scale(1.25);
+  box-shadow: 0 0 12px rgba(232, 201, 160, 0.55);
+}
+
+.journey-nav a::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.journey-nav a:hover::before,
+.journey-nav a.is-active::before {
+  opacity: 1;
+}
+
+@media (max-width: 720px) {
+  .journey-nav a::before {
+    display: none;
+  }
+
+  .journey-nav {
+    right: 0.55rem;
+    gap: 0.45rem;
+  }
+}

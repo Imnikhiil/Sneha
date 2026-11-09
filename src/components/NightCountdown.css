@@ -1,0 +1,100 @@
+.countdown {
+  min-height: 85svh;
+  display: grid;
+  place-items: center;
+  padding: 5rem 1.25rem;
+  position: relative;
+}
+
+.countdown-inner {
+  text-align: center;
+  max-width: 40rem;
+}
+
+.section-kicker {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  margin-bottom: 1rem;
+}
+
+.countdown h2,
+.timeline h2,
+.reasons h2,
+.quiz h2,
+.vault h2,
+.gift h2,
+.interlude p {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+.countdown h2 {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  margin-bottom: 0.75rem;
+}
+
+.section-sub {
+  color: var(--cream-muted);
+  line-height: 1.55;
+  margin-bottom: 2.5rem;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.countdown-flip {
+  width: 100%;
+  aspect-ratio: 1 / 1.05;
+  max-width: 92px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 40%),
+    linear-gradient(180deg, #1a2438, #0c1220);
+  border: 1px solid rgba(232, 201, 160, 0.22);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-flip::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.countdown-flip span {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  color: var(--champagne-soft);
+  letter-spacing: 0.04em;
+}
+
+.countdown-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+@media (max-width: 480px) {
+  .countdown-grid {
+    gap: 0.45rem;
+  }
+}
