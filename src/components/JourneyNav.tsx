@@ -4,9 +4,10 @@ import './JourneyNav.css'
 
 type JourneyNavProps = {
   visible: boolean
+  refresh?: number
 }
 
-export function JourneyNav({ visible }: JourneyNavProps) {
+export function JourneyNav({ visible, refresh = 0 }: JourneyNavProps) {
   const [active, setActive] = useState<string>(journeyNav[0]?.id ?? '')
 
   useEffect(() => {
@@ -29,7 +30,7 @@ export function JourneyNav({ visible }: JourneyNavProps) {
 
     nodes.forEach((n) => obs.observe(n))
     return () => obs.disconnect()
-  }, [visible])
+  }, [visible, refresh])
 
   if (!visible) return null
 

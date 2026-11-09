@@ -39,4 +39,4 @@ export function StarlitHero({ visible, onBegin }: StarlitHeroProps) {
       <p className="hero-scroll-cue">Scroll when ready</p>
     </section>
   )
-}StoryTimeline.tsx
+}
