@@ -13,8 +13,8 @@ export function SisterQuiz() {
   const total = birthday.quiz.length
 
   const rank = useMemo(() => {
-    if (score === total) return 'Official chaos co-pilot'
-    if (score >= total - 1) return 'Sister-level telepathy'
+    if (score === total) return 'Official best friend'
+    if (score >= total - 1) return 'Friend-level telepathy'
     if (score >= 2) return 'You know us pretty well'
     return 'Okay… rematch later'
   }, [score, total])
@@ -46,7 +46,7 @@ export function SisterQuiz() {
   }
 
   return (
-    <section className="quiz" id="quiz" aria-label="Sibling quiz">
+    <section className="quiz" id="quiz" aria-label="Friendship quiz">
       <div className="quiz-inner">
         <p className="section-kicker">Pop quiz</p>
         <h2>How well do you know us?</h2>

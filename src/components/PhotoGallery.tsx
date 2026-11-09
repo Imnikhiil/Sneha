@@ -71,8 +71,7 @@ export function PhotoGallery() {
         <p className="section-kicker">Photo wall</p>
         <h2>All the frames</h2>
         <p className="section-sub">
-          Drop photos in <code>public/photos/</code>, then add them in{' '}
-          <code>birthday.ts → photos</code>. Tap any frame to open.
+          Little frames from our little moments. Tap any one to open it.
         </p>
       </div>
 

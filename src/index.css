@@ -3,19 +3,19 @@
   --ink-deep: #04060d;
   --navy: #0e1628;
   --navy-mid: #162238;
-  --champagne: #e8c9a0;
-  --champagne-soft: #f0d9b5;
-  --rose-gold: #d4a574;
+  --champagne: #f3cfc6;
+  --champagne-soft: #fbe3dc;
+  --rose-gold: #e8a5b0;
   --cream: #f7f0e6;
   --cream-muted: rgba(247, 240, 230, 0.72);
   --cream-dim: rgba(247, 240, 230, 0.45);
-  --seal: #8b2e3a;
-  --seal-dark: #5c1d27;
+  --seal: #b23a5a;
+  --seal-dark: #6e1f38;
   --paper: #f3e8d6;
   --paper-shadow: #c9b89a;
   --flame: #ffb347;
   --flame-core: #fff6d8;
-  --glow: rgba(232, 201, 160, 0.35);
+  --glow: rgba(243, 175, 190, 0.35);
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -69,7 +69,7 @@ img {
 }
 
 ::selection {
-  background: rgba(232, 201, 160, 0.35);
+  background: rgba(243, 190, 200, 0.35);
   color: var(--cream);
 }
 

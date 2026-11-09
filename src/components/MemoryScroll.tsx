@@ -65,8 +65,7 @@ export function MemoryScroll() {
       <div className="memories-heading">
         <h2>Pieces of us</h2>
         <p>
-          A few frames from the story where you&apos;re both sister and the friend I never had to
-          audition for.
+          A few frames from a story where you turned out to be the friend I’m really glad I met.
         </p>
       </div>
 

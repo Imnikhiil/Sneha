@@ -23,7 +23,7 @@ export function StarlitHero({ visible, onBegin }: StarlitHeroProps) {
       <div className="hero-glass">
         <div className="hero-content">
           <p className="hero-badge">A handmade birthday night sky</p>
-          <p className="hero-kicker">Sister & friend edition</p>
+          <p className="hero-kicker">Made with extra care</p>
           <h1 className="hero-name">
             <span>For</span>
             {birthday.name}
@@ -39,4 +39,4 @@ export function StarlitHero({ visible, onBegin }: StarlitHeroProps) {
       <p className="hero-scroll-cue">Scroll when ready</p>
     </section>
   )
-}
+}StoryTimeline.tsx

@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, type ReactNode } from 'react'
 import { AmbientToggle } from './components/AmbientToggle'
 import { BalloonField } from './components/BalloonField'
 import { BlowCandle } from './components/BlowCandle'
 import { ChampagneBurst } from './components/ChampagneBurst'
 import { ChapterInterlude } from './components/ChapterInterlude'
+import { FloatingPetals } from './components/FloatingPetals'
 import { FestiveExtras } from './components/FestiveExtras'
 import { FunnyLane } from './components/FunnyLane'
 import { GiftUnwrap } from './components/GiftUnwrap'
@@ -19,6 +20,7 @@ import { SealedLetter } from './components/SealedLetter'
 import { SecretVault } from './components/SecretVault'
 import { ShootingStars } from './components/ShootingStars'
 import { SisterQuiz } from './components/SisterQuiz'
+import { SuspenseGate } from './components/SuspenseGate'
 import { SparkleCursor } from './components/SparkleCursor'
 import { StarlitHero } from './components/StarlitHero'
 import { StoryTimeline } from './components/StoryTimeline'
@@ -37,6 +39,7 @@ function App() {
   const [burst, setBurst] = useState(false)
   const [party, setParty] = useState(false)
   const [sealKey, setSealKey] = useState(0)
+  const [opened, setOpened] = useState(0)
 
   const triggerParty = useCallback(() => {
     setParty(true)
@@ -53,7 +56,7 @@ function App() {
     setPhase('journey')
     triggerParty()
     window.requestAnimationFrame(() => {
-      document.getElementById('countdown')?.scrollIntoView({ behavior: 'smooth' })
+      document.getElementById('gate-0')?.scrollIntoView({ behavior: 'smooth' })
     })
   }, [triggerParty])
 
@@ -76,6 +79,7 @@ function App() {
     setBurst(false)
     setParty(false)
     setSealKey((k) => k + 1)
+    setOpened(0)
     window.scrollTo(0, 0)
   }, [])
 
@@ -89,19 +93,34 @@ function App() {
 
   const journeyOpen = journeyStarted || phase === 'journey'
   const nightOn = phase !== 'sealed'
+  const total = birthday.suspense.length
+  const stages: ReactNode[] = [
+    <NightCountdown />,
+    <><ChapterInterlude text={birthday.interludes[0]} /><StoryTimeline /></>,
+    <><ChapterInterlude text={birthday.interludes[1]} /><PhotoGallery /></>,
+    <VideoMoments />,
+    <><ChapterInterlude text={birthday.interludes[2]} /><QuoteWall /></>,
+    <FunnyLane />,
+    <MemoryScroll />,
+    <ReasonsOrbit />,
+    <><ChapterInterlude text={birthday.interludes[3]} /><SisterQuiz /></>,
+    <><ChapterInterlude text={birthday.interludes[4]} /><SecretVault /></>,
+    <WishConstellation />,
+  ]
 
   return (
     <div className="app">
       {phase === 'sealed' && <SealedLetter key={sealKey} onOpened={onOpened} />}
 
       <BalloonField active={nightOn} />
+      <FloatingPetals active={nightOn} />
       <FestiveExtras active={nightOn} />
       <ShootingStars active={nightOn} />
       <SparkleCursor active={nightOn} />
       <PartyRain fire={party} />
       <ChampagneBurst fire={burst} />
       <AmbientToggle visible={nightOn} />
-      <JourneyNav visible={journeyOpen} />
+      <JourneyNav visible={journeyOpen} refresh={opened} />
 
       <main className={`app-main${phase === 'sealed' ? ' is-locked' : ''}`}>
         <StarlitHero visible={nightOn} onBegin={onBegin} />
@@ -109,25 +128,26 @@ function App() {
         <div className={`journey${journeyOpen ? ' is-open' : ''}`}>
           {journeyOpen && (
             <>
-              <NightCountdown />
-              <ChapterInterlude text={birthday.interludes[0]} />
-              <StoryTimeline />
-              <ChapterInterlude text={birthday.interludes[1]} />
-              <PhotoGallery />
-              <VideoMoments />
-              <ChapterInterlude text={birthday.interludes[2]} />
-              <QuoteWall />
-              <FunnyLane />
-              <MemoryScroll />
-              <ReasonsOrbit />
-              <ChapterInterlude text={birthday.interludes[3]} />
-              <SisterQuiz />
-              <ChapterInterlude text={birthday.interludes[4]} />
-              <SecretVault />
-              <WishConstellation />
+              {stages.map((node, i) =>
+                i <= opened ? (
+                  <SuspenseGate
+                    key={birthday.suspense[i].id}
+                    step={birthday.suspense[i]}
+                    index={i}
+                    total={total}
+                    onUnlock={() => setOpened((o) => Math.max(o, i + 1))}
+                  >
+                    {node}
+                  </SuspenseGate>
+                ) : null,
+              )}
+              {opened >= total && (
+                <>
               <BlowCandle onBlown={onBlown} />
               <GiftUnwrap unlocked={candleBlown} />
               <LetterFinale active={finaleActive && candleBlown} onReplay={onReplay} />
+                </>
+              )}
             </>
           )}
         </div>

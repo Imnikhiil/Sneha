@@ -25,7 +25,7 @@ export function QuoteWall() {
         <p className="section-kicker">Words that stay</p>
         <h2>Quote wall</h2>
         <p className="section-sub">
-          No files needed — just add more lines in <code>birthday.ts → quotes</code>.
+          A few lines I’ve been wanting to say.
         </p>
       </div>
 

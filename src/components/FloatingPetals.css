@@ -1,0 +1,26 @@
+.petals {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.petals span {
+  position: absolute;
+  top: -8%;
+  color: rgba(243, 175, 190, 0.45);
+  text-shadow: 0 0 10px rgba(243, 175, 190, 0.5);
+  animation: petal-fall linear infinite;
+}
+
+@keyframes petal-fall {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translate3d(28px, 55vh, 0) rotate(160deg); }
+  100% { transform: translate3d(-24px, 112vh, 0) rotate(320deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petals { display: none; }
+}

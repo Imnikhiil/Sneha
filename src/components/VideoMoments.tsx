@@ -24,8 +24,7 @@ export function VideoMoments() {
         <p className="section-kicker">Moving pictures</p>
         <h2>Video moments</h2>
         <p className="section-sub">
-          Put clips in <code>public/videos/</code> (mp4/webm), then set{' '}
-          <code>src: &quot;/videos/clip.mp4&quot;</code> in config.
+          A few moving moments. Press play when you’re ready.
         </p>
       </div>
 

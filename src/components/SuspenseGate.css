@@ -1,0 +1,144 @@
+.gate {
+  min-height: 80svh;
+  display: grid;
+  place-items: center;
+  padding: 4rem 1.25rem;
+}
+
+.gate-card {
+  width: min(92vw, 520px);
+  text-align: center;
+  padding: 2.25rem 1.5rem;
+  border-radius: 1.5rem;
+  background: radial-gradient(circle at 50% 0%, rgba(243, 190, 200, 0.14), rgba(14, 22, 40, 0.85));
+  border: 1px solid rgba(243, 190, 200, 0.28);
+  box-shadow: 0 0 60px rgba(243, 190, 200, 0.12), inset 0 0 40px rgba(0, 0, 0, 0.4);
+  animation: gate-pulse 3.2s ease-in-out infinite;
+}
+
+.gate-card h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  margin: 0.4rem 0 0.75rem;
+  color: var(--champagne-soft);
+}
+
+.gate-step {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+.gate-teaser {
+  color: var(--cream-muted);
+  line-height: 1.6;
+}
+
+.gate-bar {
+  height: 6px;
+  margin: 1.5rem auto 0.75rem;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.gate-bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--rose-gold), var(--flame));
+  box-shadow: 0 0 12px var(--flame);
+  transition: width 0.12s linear;
+}
+
+.gate-whisper {
+  min-height: 1.6em;
+  margin-bottom: 1rem;
+  font-style: italic;
+  color: var(--champagne);
+}
+
+.gate-options {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.gate-btn {
+  padding: 0.85rem 1.6rem;
+  border-radius: 99px;
+  border: 1px solid rgba(243, 190, 200, 0.5);
+  background: rgba(243, 190, 200, 0.1);
+  color: var(--cream);
+  font: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.gate-btn:hover:not(:disabled) {
+  background: rgba(243, 190, 200, 0.25);
+}
+
+.gate-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.gate-hold {
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.gate-strip {
+  text-align: center;
+  padding: 1.5rem 1rem 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+.gate-strip span {
+  color: var(--champagne);
+}
+
+.gate-reveal {
+  animation: gate-reveal 1.2s var(--ease-out) both;
+}
+
+.gate.is-burst .gate-card {
+  animation: gate-burst 1.1s var(--ease-out) forwards;
+}
+
+.is-shaking {
+  animation: gate-shake 0.4s !important;
+}
+
+@keyframes gate-pulse {
+  50% {
+    box-shadow: 0 0 90px rgba(243, 190, 200, 0.25), inset 0 0 40px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@keyframes gate-shake {
+  20% { transform: translateX(-8px) rotate(-1deg); }
+  40% { transform: translateX(8px) rotate(1deg); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+
+@keyframes gate-burst {
+  0% { transform: scale(1); filter: brightness(1); }
+  40% { transform: scale(1.06); filter: brightness(2.2); }
+  100% { transform: scale(0.9); opacity: 0; filter: brightness(1); }
+}
+
+@keyframes gate-reveal {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); filter: blur(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gate-card, .is-shaking, .gate-reveal, .gate.is-burst .gate-card {
+    animation: none !important;
+  }
+}

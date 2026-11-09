@@ -59,7 +59,7 @@ export function StoryTimeline() {
       <div className="timeline-heading">
         <p className="section-kicker">Plot points</p>
         <h2>How we got here</h2>
-        <p className="section-sub">A short map of us — sibling first, then something rarer.</p>
+        <p className="section-sub">A short map of us — friends first, and the good stories after.</p>
       </div>
 
       <div className="timeline-track">

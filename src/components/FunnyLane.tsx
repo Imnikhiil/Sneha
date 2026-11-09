@@ -21,8 +21,7 @@ export function FunnyLane() {
         <p className="section-kicker">Comedy section</p>
         <h2>Funny lane</h2>
         <p className="section-sub">
-          Inside jokes & soft roasts. Add more in <code>birthday.ts → funny</code>. Optional{' '}
-          <code>image</code> / <code>video</code> fields supported.
+          Inside jokes & very gentle roasts. All facts, mostly true.
         </p>
       </div>
 

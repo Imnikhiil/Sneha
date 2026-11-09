@@ -28,7 +28,7 @@ export function SecretVault() {
         <h2>The vault</h2>
         <p className="section-sub">
           Enter your nickname to unlock a message I almost didn’t write down.
-          <span className="vault-hint"> Hint: what I call you at home.</span>
+          <span className="vault-hint"> Hint: the nickname people use for you.</span>
         </p>
 
         {!unlocked ? (
